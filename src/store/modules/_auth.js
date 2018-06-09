@@ -1,6 +1,6 @@
 const defaultState = {
   currentUser: {}
-}
+};
 
 const actions = {
   //   getProducts: (context) => {
@@ -19,17 +19,17 @@ const actions = {
   setCurrentUser: (context) => {
     console.log(context)
   }
-}
+};
 
 const mutations = {
   AUTH_UPDATED: (state, currentUser) => {
-    state.currentUser = currentUser
+    state.currentUser = currentUser;
   }
-}
+};
 
 const getters = {
   auth: state => state.currentUser
-}
+};
 
 export default {
   state: defaultState,

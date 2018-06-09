@@ -5,8 +5,10 @@ import App from './App'
 import router from './router'
 import './plugins/vuetify'
 import './plugins/filters' // filter
-import {store} from './store'
-import {firebase} from './plugins/firebaseInit.js'
+import store from './store'
+import {
+  firebase
+} from './plugins/firebaseInit.js'
 Vue.config.productionTip = false
 /* eslint-disable no-new */
 // new Vue({
@@ -19,6 +21,7 @@ Vue.config.productionTip = false
 // })
 let app
 firebase.auth().onAuthStateChanged(user => {
+  store.commit("auth/authUpdate", user);
   // console.log(user)
   if (!app) {
     app = new Vue({
