@@ -1,5 +1,5 @@
 <template>
-  <v-app id="inspire">
+  <v-app id="app">
     <v-content>
       <v-container fluid fill-height>
         <v-layout align-center justify-center>
@@ -28,21 +28,21 @@
 </template>
 
 <script>
-import {firebase} from "@/plugins/firebaseInit.js";
-  export default {
-    name: "auth",
-    data: () => ({
-      drawer: null,
-      loginForm: {
-        email: "",
-        password: ""
-      }
-    }),
-    props: {
-      source: String
-    },
-    methods: {
-      login() {
+import { firebase } from "@/plugins/firebaseInit.js";
+export default {
+  name: "auth",
+  data: () => ({
+    drawer: null,
+    loginForm: {
+      email: "",
+      password: ""
+    }
+  }),
+  props: {
+    source: String
+  },
+  methods: {
+    login() {
       this.performingRequest = true;
       firebase
         .auth()
@@ -52,9 +52,10 @@ import {firebase} from "@/plugins/firebaseInit.js";
         )
         .then(users => {
           this.$store.commit("auth/authUpdate", users.user);
-          console.log(this.$store)
+          console.log(this.$router);
           this.performingRequest = false;
-          this.$router.push("/dashboard");
+          window.location = "/dashboard";
+          // this.$router.push("/");
           // console.log(this.$store.state.auth);
         })
         .catch(err => {
@@ -63,6 +64,10 @@ import {firebase} from "@/plugins/firebaseInit.js";
           this.errorMsg = err.message;
         });
     }
-    }
+  },
+  created() {
+    if (this.$store.state.auth.isAuth) this.$router.push("/");
+    else this.$router.push("/auth");
   }
+};
 </script>

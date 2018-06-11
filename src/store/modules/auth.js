@@ -19,6 +19,9 @@ export default {
         state.isAuth = false;
         state.authUser = null;
       }
+    },
+    logout() {
+      firebase.auth().signOut();
     }
   },
   actions: {
