@@ -52,10 +52,8 @@ export default {
         )
         .then(users => {
           this.$store.commit("auth/authUpdate", users.user);
-          console.log(this.$router);
           this.performingRequest = false;
-          window.location = "/dashboard";
-          // this.$router.push("/");
+          this.$router.go("/dashboard");
           // console.log(this.$store.state.auth);
         })
         .catch(err => {

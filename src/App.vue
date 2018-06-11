@@ -32,4 +32,5 @@ export default {
 // @import "bootstrap/scss/bootstrap.scss";
 // @import "./assets/style.scss";
 @import "vuetify/dist/vuetify.min.css";
+@import "./assets/vuetify.scss";
 </style>

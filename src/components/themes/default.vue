@@ -32,7 +32,7 @@
                             </v-list-tile-content>
                         </v-list-tile>
                     </v-list-group>
-                    <v-list-tile v-else :key="item.text">
+                    <v-list-tile v-else :key="item.text" @click="MenuAction(item)">
                         <v-list-tile-action>
                             <v-icon>{{ item.icon }}</v-icon>
                         </v-list-tile-action>
@@ -64,7 +64,7 @@
                     <v-icon>arrow_drop_down</v-icon>
                 </v-btn>
                 <v-list>
-                    <v-list-tile v-for="(item, i) in menuUser" :key="i" @click="menuUserAction(item)">
+                    <v-list-tile v-for="(item, i) in menuUser" :key="i" @click="MenuAction(item)">
                         <v-list-tile-title>{{ item.text }}</v-list-tile-title>
                     </v-list-tile>
                 </v-list>
@@ -155,7 +155,8 @@ export default {
       },
       {
         icon: "content_copy",
-        text: "Duplicates"
+        text: "Languages",
+        push: "languages"
       },
       {
         icon: "keyboard_arrow_up",
@@ -219,7 +220,7 @@ export default {
       {
         icon: "local_dining",
         text: "Logout",
-        router: "logout",
+        go: "auth",
         store: "auth/logout"
       }
     ]
@@ -228,9 +229,10 @@ export default {
     source: String
   },
   methods: {
-    menuUserAction(menuData) {
-      if (menuData.store) this.$store.commit(menuData.store);
-      // this.$router.go("/auth");
+    MenuAction(item) {
+        if (item.store) this.$store.commit(item.store);
+        else if (item.go) this.$router.go('/' + item.go);
+        else this.$router.push('/' + item.push);
     }
   }
 };
