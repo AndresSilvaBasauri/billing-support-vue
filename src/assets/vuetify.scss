@@ -1,11 +1,63 @@
-.clear-fix{
+// objects
+$color-primary:#1867c0;
+$color-success:#4caf50;
+$color-error:#ff5252;
+$color-warning:#ffc107;
+$color-info:#2196f3;
+// options
+.clear-fix {
   clear: both
 }
-.fixed{
+
+.fixed {
   position: fixed
 }
-.card-dialog-action {
-  position: absolute;
-  top: 19px;
-  right: 10px;
+
+// button
+.btn {
+  margin: 0 3px;
+}
+
+.btn.sm {
+  min-width: initial;
+  padding:0 9px;
+}
+.btn.btn-flat{
+  background-color: transparent!important;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border: 1px solid transparent!important
+}
+.btn.btn-flat:hover{
+  border: 1px solid #ccc !important
+}
+.btn.primary.btn-flat{
+  color: $color-primary!important
+}
+.btn.primary.btn-flat:hover{
+  border: 1px solid $color-primary!important
+}
+.btn.success.btn-flat{
+  color: $color-success!important
+}
+.btn.success.btn-flat:hover{
+  border: 1px solid $color-success!important
+}
+.btn.error.btn-flat{
+  color: $color-error!important
+}
+.btn.error.btn-flat:hover{
+  border: 1px solid  $color-error!important
+}
+.btn.warning.btn-flat{
+  color: $color-warning!important
+}
+.btn.warning.btn-flat:hover{
+  border: 1px solid $color-warning!important
+}
+.btn.info.btn-flat{
+  color: $color-info!important
+}
+.btn.info.btn-flat:hover{
+  border: 1px solid $color-info!important
 }

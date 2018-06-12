@@ -1,16 +1,23 @@
 <template>
     <div>
-        <div v-if="formshow==list">
+         <!-- <v-dialog v-model="dialog" max-width="1000">
+            <addedit :dialog="dialog" :editedIndex="editedIndex" @close-dialog="dialog = false"></addedit>
+        </v-dialog> -->
+        <div v-if="formshow==addedit">
+            <addedit :formshow="formshow" :editedIndex="editedIndex" @close-formshow="formshow = list"></addedit>
+        </div>
+        <div v-else>
             <v-card>
                 <v-card-title>
-                    <!-- <v-btn color="primary" @click.stop="dialog = !dialog">
+                    <!-- <v-btn color="primary" @click.stop="formshow = addedit">
                         <i class="material-icons">add</i>
                     </v-btn> -->
-                    <v-btn color="primary" @click.stop="formshow = addedit">
-                        <i class="material-icons">add</i>
-                    </v-btn>
-                    <v-spacer></v-spacer>
                     <v-text-field v-model="search" append-icon="search" label="Search" single-line hide-details></v-text-field>
+                    <v-spacer></v-spacer>
+                    <v-tooltip left>
+                        <button class="btn btn-flat primary sm" slot="activator" @click.stop="formshow = addedit"><i class="material-icons">add</i></button>
+                        <span>Add</span>
+                    </v-tooltip>
                 </v-card-title>
                 <v-data-table v-model="selected" :headers="headers" :items="data" :search="search" :pagination.sync="pagination" :total-items="totalData" :loading="loading" :rows-per-page-items="rowPerPage" class="elevation-1">
                     <template slot="headers" slot-scope="props">
@@ -51,15 +58,10 @@
                 </v-data-table>
             </v-card>
         </div>
-        <!-- <v-dialog v-model="dialog" max-width="1000">
-            <addedit :dialog="dialog" :editedIndex="editedIndex" @close-dialog="dialog = false"></addedit>
-        </v-dialog> -->
-        <div v-else-if="formshow==addedit">
-            <addedit :formshow="formshow" :editedIndex="editedIndex" @close-formshow="formshow = list"></addedit>
-        </div>
     </div>
 </template>
 <script>
+import {mapState, mapGetters, mapActions} from 'vuex'
 import addedit from "./addedit";
 export default {
   components: {

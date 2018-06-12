@@ -3,5 +3,8 @@ export class Languages {
   desc;
   icon;
   orders = 1;
+  created;
+  updated;
+  deleted;
   flag = true;
 }
