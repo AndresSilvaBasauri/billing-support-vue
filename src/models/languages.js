@@ -1,6 +1,11 @@
 export class Languages {
   id;
-  groupid;
   name;
-  values;
+  desc;
+  icon;
+  orders = 1;
+  created;
+  updated;
+  deleted;
+  flag = true;
 }
