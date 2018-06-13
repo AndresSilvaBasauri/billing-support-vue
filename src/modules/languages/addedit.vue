@@ -113,8 +113,7 @@ export default {
     },
     save() {
         this.addItem(this.dataItem);
-        console.log(this.dataItem);
-        console.log(this.$store)
+        // console.log(this.$store)
       // if (this.editedIndex > -1) {
       //   Object.assign(this.desserts[this.editedIndex], this.editedItem)
       // } else {
@@ -124,7 +123,8 @@ export default {
     }
   },
   created() {
-      console.log(this.$store)
+      console.log(this.dataItem)
+      // console.log(this.$store)
     // document.getElementsByClassName('mce-notification')[0].remove()
     // var parent = document.getElementById("app");
     // parent.replaceChild(children, "");

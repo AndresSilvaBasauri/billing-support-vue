@@ -1,4 +1,4 @@
-import {firebase} from '@/plugins/firebaseInit.js'
+import { fb } from '@/plugins/firebaseInit.js'
 export default {
   namespaced: true,
 
@@ -21,7 +21,7 @@ export default {
       }
     },
     logout() {
-      firebase.auth().signOut();
+      fb.auth().signOut();
     }
   },
   actions: {

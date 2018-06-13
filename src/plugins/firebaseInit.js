@@ -1,25 +1,26 @@
 // import firebaseConfig from './firebaseConfig'
-import firebase from 'firebase/app'
+import fb from 'firebase/app'
 import 'firebase/firestore'
 import 'firebase/auth'
-// config
-const firebaseConfig = {
-  apiKey: 'AIzaSyBzZfKe1bb1UU018QpY-UxlNZ2uZa78Il0',
-  authDomain: 'billingsupportvue.firebaseapp.com',
-  databaseURL: 'https://billingsupportvue.firebaseio.com',
-  projectId: 'billingsupportvue',
-  storageBucket: '',
-  messagingSenderId: '916374704978'
-}
-firebase.initializeApp(firebaseConfig)
+// Initialize Firebase
+var config = {
+  apiKey: "AIzaSyDtnJLGrKz6F081O-Aij-8mDhIFuDh_-MM",
+  authDomain: "billingsupport-6216c.firebaseapp.com",
+  databaseURL: "https://billingsupport-6216c.firebaseio.com",
+  projectId: "billingsupport-6216c",
+  storageBucket: "",
+  messagingSenderId: "760083933037"
+};
+fb.initializeApp(config)
 // const db = firebase.firestore();
 // const auth = firebase.auth();
 // const currentUser = auth.currentUser;
 const settings = {
   timestampsInSnapshots: true
 } // your settings...
-const firestore = firebase.firestore()
-firestore.settings(settings)
+const fs = fb.firestore()
+fs.settings(settings)
+fs.authUser = null;
 // db.settings(settings);
 // firebase collections
 // const usersCollection = db.collection('users')
@@ -36,6 +37,6 @@ firestore.settings(settings)
 //   likesCollection
 // }
 export {
-  firebase,
-  firestore
+  fb,
+  fs
 }

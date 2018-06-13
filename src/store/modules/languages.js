@@ -1,10 +1,7 @@
 import helpers from '@/plugins/helpers.js'
-import {
-  firestore
-} from '@/plugins/firebaseInit.js'
-import {
-  Languages
-} from "@/models/languages";
+import { fb, fs } from '@/plugins/firebaseInit.js'
+import { Languages } from "@/models/languages";
+import { Store } from 'vuex';
 var languages = new Languages();
 export default {
   namespaced: true,
@@ -28,7 +25,7 @@ export default {
     fetchItems({
       commit
     }) {
-      return firestore
+      return fs
         .collection("languages")
         .get()
         .then(function (querySnapshot) {
@@ -46,8 +43,8 @@ export default {
     addItem({
       commit
     }, item) {
-      firestore
-        .collection("languages")
+      item.created = { by: fs.authUser.uid, at: new Date() };
+      fs.collection("languages")
         .add(helpers.convertObject(item)).then((item) => {
           commit('SET', item);
           console.log(item);

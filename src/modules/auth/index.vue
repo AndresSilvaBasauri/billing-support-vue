@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import { firebase } from "@/plugins/firebaseInit.js";
+import { fb } from "@/plugins/firebaseInit.js";
 export default {
   name: "auth",
   data: () => ({
@@ -44,7 +44,7 @@ export default {
   methods: {
     login() {
       this.performingRequest = true;
-      firebase
+      fb
         .auth()
         .signInWithEmailAndPassword(
           this.loginForm.email,
